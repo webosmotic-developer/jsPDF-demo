@@ -1,0 +1,21 @@
+export default (doc, address, startY, fontSize, lineSpacing) => {
+
+    const startX = 25;
+    const pageWidth = doc.internal.pageSize.width;
+
+    doc.addImage('img/logo1.png', 'png', pageWidth - 150, startY, 125, 49);
+
+    // -------Customer Info Address---------------------
+    doc.setFontType('bold');
+    doc.setFontSize(fontSize);
+
+    address = Object.values(address);
+
+    address.map(text => {
+        if (text) {
+            doc.text(text, startX, startY += lineSpacing);
+        }
+    });
+
+    return startY;
+}
